@@ -11,7 +11,7 @@ bool betPlaced = false, first = true, gameFinish = false;
 int playerNrOfCards, dealerNrOfCards;
 int playerCards, dealerCards;
 
-enum rank
+enum value
 {
     ACE = 1,
     TWO,
@@ -28,9 +28,11 @@ enum rank
     KING = 10
 };
 
-struct MyStruct
-{
-
+enum suits {
+    SPADES,
+    HEARTS,
+    CLUBS, 
+    DIAMONDS
 };
 
 void blackJackDealer() {
