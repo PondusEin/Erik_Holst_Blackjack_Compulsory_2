@@ -6,11 +6,17 @@
 #include <Windows.h>
 #include <conio.h>
 
-int balance = 100;
-bool betPlaced = false, first = true, gameFinish = false;
+int playerBalance = 100; int houseBalance = 100;
+bool betPlaced = false, firstRound = true, gameFinish = false;
 int playerNrOfCards, dealerNrOfCards;
 int playerCards, dealerCards;
 
+struct Players
+{
+    int money{ 100 };
+    int score{ 0 };
+    std::vector<int> cards;
+};
 enum value
 {
     ACE = 1,
@@ -46,9 +52,20 @@ void blackJackPlayer() {
 void blackJackGame() {
 
 }
+void information() {
+
+}
 
 int main()
 {
     srand((unsigned)time(nullptr));
+    do
+    {
+        if (playerBalance == 0 || houseBalance == 0)
+        {
+            gameFinish == true;
+            break;
+        }
+    } while (gameFinish == false);
 }
 
