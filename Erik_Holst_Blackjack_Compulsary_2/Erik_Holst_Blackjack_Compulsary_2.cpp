@@ -1,13 +1,11 @@
-#include <iostream>
-#include <ctime>
+#include "Game.h"
 #include <vector>
-#include <string>
-#include <limits>
 #include <Windows.h>
 #include <conio.h>
 
+/*
 int playerBalance = 100; int houseBalance = 100;
-bool betPlaced = false, firstRound = true, gameFinish = false;
+bool betPlaced = false, firstRound = true;
 int playerNrOfCards, dealerNrOfCards;
 int playerCards, dealerCards;
 
@@ -55,17 +53,15 @@ void blackJackGame() {
 void information() {
 
 }
-
+*/
 int main()
 {
     srand((unsigned)time(nullptr));
-    do
-    {
-        if (playerBalance == 0 || houseBalance == 0)
-        {
-            gameFinish == true;
-            break;
-        }
-    } while (gameFinish == false);
+
+    Game game;
+
+    while (game.Run() && !game.IsGameFinish()) {
+        game.update();
+    } 
 }
 
