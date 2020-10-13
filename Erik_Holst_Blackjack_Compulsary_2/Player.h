@@ -7,14 +7,15 @@
 class Player
 {
 private:
-	int m_hand;
-	int m_card;
+	int hand;
+	int card;
+	int balance;
 
 public:
 	Player();
 
-	const int getHand() const { return this->m_hand; }
-
+	const int getHand() const { return hand; }
+	const int getBalance() const { return balance; }
 	int randomCard();
 };
 

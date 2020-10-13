@@ -4,9 +4,10 @@
 class Game
 {
 private:
-	bool m_running;
-	char m_command;
-	bool m_gameFinish;
+	bool running;
+	char command;
+	bool gameFinish;
+	int bet;
 
 	Player player;
 	Player house;
@@ -16,8 +17,8 @@ private:
 public:
 	Game();
 
-	const bool& Run() const { return this->m_running; }
-	const bool& IsGameFinish() const { return this->m_gameFinish; }
+	const bool& Run() const { return running; }
+	const bool& IsGameFinish() const { return gameFinish; }
 
 	void update();
 };

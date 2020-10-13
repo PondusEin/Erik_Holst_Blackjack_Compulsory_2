@@ -2,17 +2,17 @@
 
 Player::Player()
 {
-	this->m_hand = 0;
-	this->m_card = 0;
-
+	hand = 0;
+	card = 0;
+	balance = 100;
 	system("cls");
 }
 
 int Player::randomCard()
 {
-	this->m_card = rand() % 13 + 1;
+	card = rand() % 10 + 1;
 
-	this->m_hand += this->m_card;
+	hand += card;
 
-	return this->m_card;
+	return card;
 }
