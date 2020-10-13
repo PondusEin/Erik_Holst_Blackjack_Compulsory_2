@@ -1,10 +1,7 @@
 #include "Game.h"
-#include <vector>
-#include <Windows.h>
-#include <conio.h>
+
 
 /*
-int playerBalance = 100; int houseBalance = 100;
 bool betPlaced = false, firstRound = true;
 int playerNrOfCards, dealerNrOfCards;
 int playerCards, dealerCards;

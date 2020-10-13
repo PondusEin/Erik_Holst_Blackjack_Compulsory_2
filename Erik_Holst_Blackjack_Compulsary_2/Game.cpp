@@ -7,24 +7,26 @@ Game::Game()
 	running = true;
 	gameFinish = false;
 	command = ' ';
-
+	balance = 100;
+	totalSum = balance;
 }
 
 void Game::endGame()
 {
 	if (player.getHand() <= 21 && player.getHand() > house.getHand())
 	{
-		gameFinish = true;
+		std::cout << "You win! \n";
+	}
+	else if (house.getHand() > 21)
+	{
 		std::cout << "You win! \n";
 	}
 	else if (house.getHand() <= 21 && house.getHand() > player.getHand())
 	{
-		gameFinish = true;
 		std::cout << "You lose! \n";
 	}
 	else if (house.getHand() == player.getHand())
 	{
-		gameFinish = true;
 		std::cout << "It's a tie, no winners, no loosers.";
 	}
 	else
@@ -36,8 +38,7 @@ void Game::endGame()
 void Game::update()
 {
 	std::cout << "Please make a bet. Minimum amount is 10$. " << std::endl;
-	std::cin >> bet;
-	player.getBalance();
+
 	std::cout << "Enter 'H' to draw a card. Enter 'S' to hold with your cards. First person that is closer to 21 wins!\n";
 	std::cin >> command;
 
@@ -53,7 +54,7 @@ void Game::update()
 		std::cout << "\n\n";
 		if (player.getHand()>21)
 		{
-			this->endGame();
+			endGame();
 		}
 		else
 		{
