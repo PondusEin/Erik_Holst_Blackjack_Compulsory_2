@@ -13,9 +13,7 @@ class Player
 private:
 	int hand;
 	int card;
-	int bet;
 	int balance;
-
 public:
 	Player();
 

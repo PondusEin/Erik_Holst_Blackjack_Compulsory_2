@@ -7,6 +7,7 @@ Game::Game()
 	exit = false;
 	gameFinish = false;
 	command = ' ';
+	bet={ 10 };
 }
 
 void Game::endGame()
@@ -24,11 +25,35 @@ void Game::endGame()
 		std::cout << "It's a tie, no winners, no loosers.";
 	}
 }
+void betting() {
+
+
+	player.getBalance() -= bet;
+	house.getBalance() -= bet;
+}
 
 void Game::update()
 {
-	std::cout << "Please make a bet. Minimum amount is 10$. " << std::endl;
+	std::cout << "Please make a bet.\n\nYou have: " << player.getBalance() << " dollars. The house have: " << house.getBalance() << " dollars. \n\nMinimum amount is $10. " << std::endl;
+	std::cout << "Input: $";
+	
+	do
+	{
+		if (bet < 10)
+		{
+			std::cout << "Error: Must bet minimum $10 to participate!";
+		}
+		else if (player.getBalance() < bet)
+		{
+			std::cout << "Error: Player do not have that amount of money!";
+		}
+		else if (house.getBalance() < bet)
+		{
+			std::cout << "Error: House do not have that amount of money!";
+		}
+	} while (bet <10 || bet>player.getBalance() || bet > house.getBalance());
 
+	betting();
 	std::cout << "Enter 'H' to draw a card. Enter 'S' to hold with your cards. First person that is closer to 21 wins!\n";
 	std::cin >> command;
 	do

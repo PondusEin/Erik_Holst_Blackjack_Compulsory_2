@@ -4,7 +4,7 @@ Player::Player()
 {
 	hand = 0;
 	card = 0;
-	bet = 0;
+
 	balance = 100;
 	system("cls");
 }

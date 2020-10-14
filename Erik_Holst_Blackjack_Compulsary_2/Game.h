@@ -8,7 +8,7 @@ private:
 	char command;
 	bool gameFinish;
 	int totalSum;
-	
+	int bet;
 
 	Player player;
 	Player house;
