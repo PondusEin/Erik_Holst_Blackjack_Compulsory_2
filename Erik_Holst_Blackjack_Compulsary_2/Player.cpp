@@ -17,3 +17,26 @@ int Player::randomCard()
 
 	return card;
 }
+enum value
+{
+    ACE = 1,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN,
+    JACK = 10,
+    QUEEN = 10,
+    KING = 10
+};
+
+enum suits {
+    SPADES,
+    HEARTS,
+    CLUBS,
+    DIAMONDS
+};

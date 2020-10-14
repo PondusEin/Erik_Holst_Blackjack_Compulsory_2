@@ -11,12 +11,12 @@
 class Player
 {
 private:
+
+public:
+	Player();
 	int hand;
 	int card;
 	int balance;
-public:
-	Player();
-
 	const int getHand() const { return hand; }
 	const int getBalance() const { return balance; }
 
