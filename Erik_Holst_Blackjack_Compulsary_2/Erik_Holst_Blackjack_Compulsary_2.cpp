@@ -53,6 +53,7 @@ int main()
                 }
                 else if (answer == 'n' || answer == 'N')
                 {
+                    game.gameFinish = false;
                     game.exit = true;
                 }
                 else
@@ -63,6 +64,6 @@ int main()
         } while (game.IsGameFinish());
     } while (!game.Exit());
 
-    std::cout << "Thank you, come again";
-    exit;
+    std::cout << "\n\nThank you, come again\n\n";
+    system(EXIT_SUCCESS);
 }

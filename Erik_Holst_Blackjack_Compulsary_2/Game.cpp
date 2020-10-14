@@ -18,7 +18,7 @@ void Game::newgame() {
 
 void ifAce(Player &player) {
 	int ace;
-	for (int i = 0; i < length; i++)
+//	for (int i = 0; i < length; i++)
 	{
 
 	}
