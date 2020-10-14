@@ -56,9 +56,19 @@ int main()
     srand((unsigned)time(nullptr));
 
     Game game;
-
-    while (game.Run() && !game.IsGameFinish()) {
+    do
+    {
         game.update();
-    } 
+
+        do
+        {
+            if (game.IsGameFinish())
+            {
+                std::cout << "Would you like to play another round? [Y/N]";
+                std::cin >> 
+            }
+        } while (game.IsGameFinish());
+    } while (!game.Exit());
+
 }
 

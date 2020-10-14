@@ -14,11 +14,13 @@ private:
 	int hand;
 	int card;
 	int bet;
+	int balance;
 
 public:
 	Player();
 
 	const int getHand() const { return hand; }
+	const int getBalance() const { return balance; }
 
 	int randomCard();
 };

@@ -4,10 +4,9 @@
 class Game
 {
 private:
-	bool running;
+	bool exit;
 	char command;
 	bool gameFinish;
-	int balance;
 	int totalSum;
 	
 
@@ -19,8 +18,7 @@ private:
 public:
 	Game();
 
-	const bool& Run() const { return running; }
+	const bool& Exit() const { return exit; }
 	const bool& IsGameFinish() const { return gameFinish; }
-	const int getBalance() const { return balance; }
 	void update();
 };
