@@ -19,7 +19,5 @@ public:
 	int balance;
 	const int getHand() const { return hand; }
 	const int getBalance() const { return balance; }
-
 	int randomCard();
 };
-

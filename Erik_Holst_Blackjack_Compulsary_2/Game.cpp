@@ -1,7 +1,5 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
 	exit = false;
@@ -16,12 +14,46 @@ void Game::newgame() {
 	update();
 }
 
-void ifAce(Player &player) {
-	int ace;
-//	for (int i = 0; i < length; i++)
+void Game::ifAcePlayer() {
+	int aceValue{ 0 };
+	std::cout << "You got an ACE!\n";
+	std::cout << "Please select between 'y' for 1 and 'n' for 11.\n";
+	std::cout << "Input: ";
+	do
 	{
+		std::cin >> command;
+		switch (command)
+		{
+		case 'y': case'Y':
+			aceValue = 1;
+			break;
+		case 'n': case 'N':
+			aceValue = 11;
+			break;
+		default:
+			std::cout << "Please select between 'y' for 1 and 'n' for 11\n";
+			std::cout << "Input: ";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin >> command;
+			break;
+		}
+	} while (aceValue != 1 && aceValue != 11);
+	player.hand += aceValue;
+	std::cout << "Player's hand - " << player.getHand() << '\n';
+}
 
+void Game::ifAceHouse() {
+	int aceValue{ 0 };
+	if (house.getHand()+house.card <= 21 )
+	{
+		aceValue = 11;
 	}
+	else
+	{
+		aceValue = 1;
+	}
+	house.hand += aceValue;
 }
 
 void Game::reset() {
@@ -43,39 +75,38 @@ void Game::endGame()
 	{
 		std::cout << "You win! \n";
 		player.balance += bet * 2;
-		reset();
-
 	}
 	else if (house.getHand() <= 21 && house.getHand() > player.getHand() || player.getHand() > 21 )
 	{
 		std::cout << "You lose! \n";
 		house.balance += bet * 2;
-		reset();
 	}
 	else if (house.getHand() == player.getHand())
 	{
 		std::cout << "It's a tie, no winners, no loosers.\n";
 		player.balance += bet;
 		house.balance += bet;
-		reset();
 	}
+	std::cout << "You have: " << player.getBalance() << " dollars. The house have: " << house.getBalance() << " dollars." << std::endl;
+	std::cout << "\nPress any key to continue.";
+	char temp = _getch();
+	system("cls");
+	reset();
 }
-
 
 
 void Game::update()
 {
 	do
 	{
+		system("cls");
 		std::cout << "Please make a bet.\n\nYou have: " << player.getBalance() << " dollars. The house have: " << house.getBalance() << " dollars. \n\nMinimum amount is $10. " << std::endl;
 		std::cout << "Input: $";
-
 		std::cin >> bet;
 		if (std::cin.fail())
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
 			system("cls");
 		}
 		else if (bet < 10)
@@ -93,12 +124,9 @@ void Game::update()
 			system("cls");
 			std::cout << "Error: House do not have that amount of money!\n";
 		}
-
 	} while (bet < 10 || bet > player.getBalance() || bet > house.getBalance());
-
 	player.balance -= bet;
 	house.balance -= bet;
-
 	gameplay();
 }
 
@@ -108,7 +136,6 @@ void Game::gameplay() {
 	{
 		std::cout << "Enter 'H' to draw a card. Enter 'S' to hold with your cards. First person that is closer to 21 wins!\n";
 		std::cin >> command;
-
 		switch (command)
 		{
 		case 'h': case 'H':
@@ -124,6 +151,10 @@ void Game::gameplay() {
 				playing = false;
 				endGame();
 			}
+			else if (player.card == 1)
+			{
+				ifAcePlayer();
+			}
 			else
 			{
 				std::cout << "Press [Enter] to continue... \n";
@@ -136,29 +167,16 @@ void Game::gameplay() {
 		case 's': case 'S':
 			while (house.getHand() <= player.getHand())
 			{
-
 				std::cout << "House drew - " << house.randomCard() << '\n';
-
 				std::cout << "\n\n";
-
+				if (house.card == 1)
+				{
+					ifAceHouse();
+				}
 				std::cout << "House's hand - " << house.getHand() << '\n';
 				std::cout << "Player's hand - " << player.getHand() << '\n';
-
 				std::cout << "\n\n";
-				Sleep(3000);
-			}
-	/*		if (house.getHand() > 21)
-			{
-				playing = false;
-				endGame();
-			}*/
-			if (true)
-			{
-
-				/*std::cout << "Press [Enter] to continue... \n";
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				std::cin.ignore();*/
+				Sleep(2500);
 				system("cls");
 			}
 			playing = false;

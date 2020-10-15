@@ -4,28 +4,21 @@
 class Game
 {
 private:
-
-	char command;
-
-//	int totalSum;
-
-
-
 	void endGame();
-
 public:
 	Game();
 	int bet;
-	int ace;
 	Player player;
 	Player house;
 	bool gameFinish;
 	bool exit;
+	char command;
 	const bool& Exit() const { return exit; }
 	const bool& IsGameFinish() const { return gameFinish; }
 	void update();
 	void reset();
 	void gameplay();
 	void newgame();
-
+	void ifAcePlayer();
+	void ifAceHouse();
 };

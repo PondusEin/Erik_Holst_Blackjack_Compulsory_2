@@ -1,43 +1,12 @@
 #include "Game.h"
 
-
-/*
-bool betPlaced = false, firstRound = true;
-int playerNrOfCards, dealerNrOfCards;
-int playerCards, dealerCards;
-
-struct Players
-{
-    int money{ 100 };
-    int score{ 0 };
-    std::vector<int> cards;
-};
-
-
-void blackJackDealer() {
-
-}
-
-void blackJackPlayer() {
-
-}
-
-void blackJackGame() {
-
-}
-void information() {
-
-}
-*/
 int main()
 {
     srand((unsigned)time(nullptr));
-
     Game game;
     do
     {
         game.newgame();
-
         do
         {
             char answer;
@@ -63,7 +32,6 @@ int main()
             }
         } while (game.IsGameFinish());
     } while (!game.Exit());
-
-    std::cout << "\n\nThank you, come again\n\n";
+    std::cout << "\n\nThank you, come again!\n\n";
     system(EXIT_SUCCESS);
 }
